@@ -1,4 +1,5 @@
 "use client";
+
 import PetsList from "./components/PetsList";
 import SearchAndFilter from "./Components/SearchAndFilter";
 import pets from "./data/pets";
