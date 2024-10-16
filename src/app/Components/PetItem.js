@@ -3,15 +3,13 @@ import Image from "next/image";
 import { useState } from "react";
 
 const btnStyle =
-  "m-4 p-2 bg-palette-primary text-white rounded-sm font-primary font-semibold  hover:bg-palette-dark";
+  "m-4 p-2 bg-palette-primary text-white rounded-sm font-primary font-semibold hover:bg-palette-dark";
 
-function PetItem({ pet }) {
+function PetItem({ pet, handleDelete }) {
   const [petImage, setPetImage] = useState(pet.image);
 
   function updateImage() {
-    setPetImage(() =>
-      petImage === pet.image ? setPetImage(pet.image2) : setPetImage(pet.image)
-    );
+    setPetImage(petImage === pet.image ? pet.image2 : pet.image);
   }
 
   return (
@@ -36,7 +34,7 @@ function PetItem({ pet }) {
           <button type="button" className={btnStyle} onClick={updateImage}>
             Pet
           </button>
-          <button type="button" className={btnStyle}>
+          <button type="button" className={btnStyle} onClick={() => handleDelete(pet.id)}>
             Adopt
           </button>
         </div>

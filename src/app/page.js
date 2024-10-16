@@ -2,12 +2,13 @@
 
 import PetsList from "./components/PetsList";
 import SearchAndFilter from "./Components/SearchAndFilter";
-import pets from "./data/pets";
+import initialPets from "./data/pets";
 import { useState } from "react";
 
 export default function Home() {
   const [query, setQuery] = useState("");
   const [type, setType] = useState("");
+  const [pets, setPets] = useState(initialPets); 
 
   function handleChange(event) {
     setQuery(event.target.value);
@@ -15,7 +16,12 @@ export default function Home() {
 
   function handleType(event) {
     setType(event.target.value);
-    console.log(type);
+    console.log(event.target.value);
+  }
+
+  function handleDelete(id) {
+    const updatedPets = pets.filter((pet) => pet.id !== id);
+    setPets(updatedPets); 
   }
 
   return (
@@ -29,6 +35,7 @@ export default function Home() {
         type={type}
         handleChange={handleChange}
         handleType={handleType}
+        handleDelete={handleDelete}
       />
     </div>
   );
