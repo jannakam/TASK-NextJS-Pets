@@ -3,7 +3,7 @@ import React from 'react'
 function SearchAndFilter({handleType, handleChange}) {
   return (
     <>
-        <div>
+    <div className="flex flex-col items-start space-y-1 flex-grow">
             <input
               type="search"
               placeholder="search"
